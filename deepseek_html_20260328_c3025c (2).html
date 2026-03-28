@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Md. Ashikur Rahman | Portfolio</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #0a0c10;
+      color: #eef2ff;
+      font-family: 'Inter', sans-serif;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* dark theme base with subtle gradient */
+    .bg-dark-grad {
+      background: radial-gradient(circle at 10% 20%, #0f1217, #030507);
+    }
+
+    /* neon blue/purple accent */
+    :root {
+      --accent: #3b82f6;
+      --accent-glow: #6366f1;
+      --accent-purple: #a855f7;
+      --card-bg: rgba(18, 22, 30, 0.75);
+      --border-light: rgba(59, 130, 246, 0.2);
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* sticky navbar */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(14px);
+      background: rgba(5, 7, 12, 0.85);
+      border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+      transition: all 0.2s;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 1.5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      background: linear-gradient(135deg, #fff, var(--accent));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #cdd9ff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: var(--accent);
+      border-bottom: 2px solid var(--accent);
+      padding-bottom: 4px;
+    }
+
+    /* theme toggle */
+    .theme-toggle {
+      background: rgba(255,255,255,0.05);
+      border: none;
+      color: #eef2ff;
+      font-size: 1.25rem;
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      transition: 0.2s;
+    }
+    .theme-toggle:hover {
+      background: var(--accent);
+      color: #0a0c10;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: transparent;
+      border: 1.5px solid var(--accent);
+      color: var(--accent);
+      padding: 0.6rem 1.5rem;
+      border-radius: 40px;
+      font-weight: 600;
+      transition: 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      border: none;
+      box-shadow: 0 5px 12px rgba(59,130,246,0.3);
+    }
+    .btn-primary:hover {
+      background: var(--accent-purple);
+      transform: translateY(-3px);
+    }
+    .btn-outline:hover {
+      background: rgba(59,130,246,0.15);
+      transform: translateY(-2px);
+    }
+
+    /* section styling */
+    section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(120deg, #fff, var(--accent));
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60%;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    /* cards, timeline */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.8rem;
+    }
+    .exp-card, .edu-card, .cert-card {
+      background: var(--card-bg);
+      backdrop-filter: blur(4px);
+      border: 1px solid var(--border-light);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      transition: all 0.25s ease;
+    }
+    .exp-card:hover, .edu-card:hover, .cert-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--accent);
+      box-shadow: 0 20px 30px -12px rgba(59,130,246,0.2);
+    }
+    .club-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+      color: white;
+    }
+    .role {
+      color: var(--accent);
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      margin-bottom: 1rem;
+      border-left: 3px solid var(--accent);
+      padding-left: 0.6rem;
+    }
+    .timeline-edu {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .skill-group {
+      margin: 1.5rem 0;
+    }
+    .skill-item {
+      margin-bottom: 1rem;
+    }
+    .skill-info {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 0.3rem;
+      font-size: 0.9rem;
+    }
+    .progress-bar {
+      background: #1e2538;
+      border-radius: 20px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+      width: 0%;
+      height: 100%;
+      border-radius: 20px;
+      transition: width 1s ease;
+    }
+    .contact-form input, .contact-form textarea {
+      width: 100%;
+      background: #11161f;
+      border: 1px solid #2a3346;
+      padding: 0.9rem;
+      border-radius: 16px;
+      color: white;
+      font-family: inherit;
+      margin-top: 0.4rem;
+    }
+    .contact-form input:focus, .contact-form textarea:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    footer {
+      background: #03050a;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.85rem;
+      border-top: 1px solid rgba(59,130,246,0.2);
+    }
+    .social-icons a {
+      color: #cdd9ff;
+      font-size: 1.4rem;
+      margin: 0 0.6rem;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      color: var(--accent);
+      transform: scale(1.1);
+    }
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+    }
+    .highlight {
+      color: var(--accent);
+    }
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.2rem;
+        justify-content: center;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-up.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    button, a {
+      transition: all 0.2s;
+    }
+    
+    /* Position card styles for all clubs */
+    .position-cards-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .position-card {
+      background: rgba(25, 30, 40, 0.6);
+      border-left: 4px solid var(--accent);
+      border-radius: 1rem;
+      padding: 1rem 1.2rem;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(2px);
+    }
+    .position-card:hover {
+      transform: translateX(8px);
+      background: rgba(35, 42, 55, 0.8);
+      border-left-width: 6px;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+    }
+    .position-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: -0.2px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .position-title i {
+      font-size: 1rem;
+      color: var(--accent-purple);
+    }
+    .position-period {
+      font-size: 0.7rem;
+      color: #8a99c4;
+      margin-left: 0.5rem;
+      font-weight: normal;
+    }
+    .position-card ul {
+      margin-left: 1.2rem;
+      margin-top: 0.5rem;
+      margin-bottom: 0;
+    }
+    .position-card li {
+      font-size: 0.85rem;
+      margin-bottom: 0.3rem;
+      color: #d1dbf5;
+    }
+    .main-club-header {
+      margin-bottom: 1rem;
+    }
+    .contact-link-icon {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--accent);
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .contact-link-icon:hover {
+      color: var(--accent-purple);
+      transform: translateX(3px);
+    }
+  </style>
+</head>
+<body class="bg-dark-grad">
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="logo">Ashikur<span style="color:#3b82f6">.</span></div>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Clubs</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle light/dark mode"><i class="fas fa-moon"></i></button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="fade-up">
+        <span class="role" style="border-left-color: var(--accent); background: none; padding-left:0.8rem;">👋 Welcome</span>
+        <h1 style="font-size: 3rem; font-weight: 800; margin: 0.5rem 0;">Md. Ashikur Rahman</h1>
+        <p style="font-size: 1.3rem; color: #b9c7ff;">Student | Aspiring Professional</p>
+        <p style="max-width: 550px; margin: 1rem 0 1.8rem; color: #b9c2db;">"Driven economist-in-making, blending analytical thinking with creative leadership to drive impact in tech and society."</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="tel:+8801816549143" class="btn btn-primary"><i class="fas fa-phone-alt"></i> Call</a>
+          <a href="mailto:aashique.sarkar.93@gmail.com" class="btn btn-outline"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <h2 class="section-title fade-up">About Me</h2>
+      <div class="fade-up" style="background: var(--card-bg); padding: 2rem; border-radius: 2rem; border:1px solid var(--border-light);">
+        <p style="font-size: 1.1rem;">I'm a passionate Economics student at Jagannath University with a strong drive for leadership, communication, and creative problem-solving. With a background in science and active participation in university clubs, I bridge technical know-how with human-centric innovation. I thrive in collaborative environments, believing that great ideas emerge from diverse perspectives. My goal: leverage data, AI tools, and strategic thinking to craft solutions that matter — both in business and society.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1.5rem;">
+          <div><i class="fas fa-chalkboard-user highlight"></i> <strong>Leadership</strong> – led teams, organized fests</div>
+          <div><i class="fas fa-comments highlight"></i> <strong>Communication</strong> – speakathon, presentations</div>
+          <div><i class="fas fa-lightbulb highlight"></i> <strong>Creativity</strong> – graphic design, visualization</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education (timeline/card) -->
+    <section id="education">
+      <h2 class="section-title fade-up">Education</h2>
+      <div class="timeline-edu fade-up">
+        <div class="edu-card">
+          <div style="display: flex; justify-content: space-between; flex-wrap:wrap;"><h3>🎓 Jagannath University</h3><span style="color:var(--accent)">Jun 2025 – Present</span></div>
+          <p><strong>Bachelor of Social Science, Economics</strong></p>
+          <p>Result: Not Published Yet</p>
+          <p><i class="fas fa-star-of-life" style="color: var(--accent);"></i> Communication Skill, Presentation Skill, Analytical Mindset</p>
+        </div>
+        <div class="edu-card">
+          <div><h3>🏛 Notre Dame College Mymensingh</h3><span style="color:var(--accent)">Feb 2023 – Oct 2024</span></div>
+          <p><strong>Higher Secondary Certificate (Science)</strong> · GPA: 4.50/5.00</p>
+          <p>Management Skill, Leadership Skill, Punctuality, Time Management</p>
+        </div>
+        <div class="edu-card">
+          <div><h3>📚 Sohagpur Government Shyam-Kishore Pilot Model High School</h3><span style="color:var(--accent)">Jan 2020 – Nov 2022</span></div>
+          <p><strong>Secondary School Certificate (Science)</strong> · GPA: 5.00/5.00</p>
+          <p>Foundation of discipline & academic excellence</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Club Experience - All clubs with position card style -->
+    <section id="experience">
+      <h2 class="section-title fade-up">Club Experience</h2>
+      <div class="card-grid fade-up">
+        <!-- Jagannath University IT Society -->
+        <div class="exp-card">
+          <i class="fas fa-laptop-code fa-2x" style="color: var(--accent); margin-bottom: 12px;"></i>
+          <div class="club-title">Jagannath University IT Society</div>
+          <div class="position-cards-container">
+            <div class="position-card">
+              <div class="position-title"><i class="fas fa-user"></i> Member <span class="position-period">(Feb 2026 – Present)</span></div>
+              <ul><li>Participated in Speakathon competition, honed presentation & speaking skills</li><li>Completed basic graphic design training, improved creative toolset</li></ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Jagannath University Film Society -->
+        <div class="exp-card">
+          <i class="fas fa-film fa-2x" style="color: var(--accent); margin-bottom: 12px;"></i>
+          <div class="club-title">Jagannath University Film Society</div>
+          <div class="position-cards-container">
+            <div class="position-card">
+              <div class="position-title"><i class="fas fa-user"></i> Member <span class="position-period">(Jun 2025 – Present)</span></div>
+              <ul><li>Volunteer at "1st Jagannath University Film Festival 2025" (June 23-25)</li><li>Promoted non-commercial films & collaborated on visualization team for screenings</li></ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Notre Dame Business Club - Now with position cards (swapped order: Business Club comes before Nature Club) -->
+        <div class="exp-card">
+          <i class="fas fa-chart-line fa-2x" style="color: var(--accent); margin-bottom: 12px;"></i>
+          <div class="club-title">Notre Dame Business Club</div>
+          <div class="position-cards-container">
+            <div class="position-card">
+              <div class="position-title"><i class="fas fa-users"></i> Organization Secretary <span class="position-period">(Apr 2023 – Jan 2024)</span></div>
+              <ul><li>Manage and control all manpower of our club</li><li>Worked for a business fest and one of the main organizer of our team</li><li>Worked for arranging seminar about business and entrepreneurship in our college</li></ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Notre Dame Nature and Literature Club - Position cards style -->
+        <div class="exp-card">
+          <i class="fas fa-leaf fa-2x" style="color: var(--accent); margin-bottom: 12px;"></i>
+          <div class="club-title">Notre Dame Nature and Literature Club</div>
+          <div class="position-cards-container">
+            <!-- Publicity Secretary Card -->
+            <div class="position-card">
+              <div class="position-title"><i class="fas fa-bullhorn"></i> Publicity Secretary <span class="position-period">(Mar 2023 – Jan 2024)</span></div>
+              <ul><li>Worked for publishing magazine</li><li>Worked for engaging our club among juniors</li></ul>
+            </div>
+            <!-- Social Media Manager Card -->
+            <div class="position-card">
+              <div class="position-title"><i class="fas fa-chalkboard-user"></i> Social Media Manager <span class="position-period">(Feb 2023 – Oct 2023)</span></div>
+              <ul><li>Create and manage all social platforms of our club</li><li>Make a video documentary of our club</li></ul>
+            </div>
+            <!-- Advisor Card -->
+            <div class="position-card">
+              <div class="position-title"><i class="fas fa-graduation-cap"></i> Advisor <span class="position-period">(Jan 2024 – Jun 2024)</span></div>
+              <ul><li>Suggest junior about managing club</li></ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills section with progress bars -->
+    <section id="skills">
+      <h2 class="section-title fade-up">Skills & Expertise</h2>
+      <div class="fade-up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <div>
+          <h3><i class="fas fa-microchip"></i> Technical Skills</h3>
+          <div class="skill-group">
+            <div class="skill-item"><div class="skill-info"><span>Microsoft Office</span><span>Advanced</span></div><div class="progress-bar"><div class="progress-fill" data-width="90"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Artificial Intelligence</span><span>Proficient</span></div><div class="progress-bar"><div class="progress-fill" data-width="75"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Graphic Design</span><span>Intermediate</span></div><div class="progress-bar"><div class="progress-fill" data-width="60"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Programming</span><span>Intermediate</span></div><div class="progress-bar"><div class="progress-fill" data-width="55"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Data Analysis</span><span>Basic</span></div><div class="progress-bar"><div class="progress-fill" data-width="40"></div></div></div>
+          </div>
+        </div>
+        <div>
+          <h3><i class="fas fa-users"></i> Soft Skills</h3>
+          <div class="skill-group">
+            <div class="skill-item"><div class="skill-info"><span>Creative Thinking</span><span>Expert</span></div><div class="progress-bar"><div class="progress-fill" data-width="95"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Teamwork</span><span>Expert</span></div><div class="progress-bar"><div class="progress-fill" data-width="92"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Problem Solving</span><span>Advanced</span></div><div class="progress-bar"><div class="progress-fill" data-width="85"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Time Management</span><span>Advanced</span></div><div class="progress-bar"><div class="progress-fill" data-width="88"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Communication</span><span>Proficient</span></div><div class="progress-bar"><div class="progress-fill" data-width="78"></div></div></div>
+            <div class="skill-item"><div class="skill-info"><span>Leadership</span><span>Intermediate</span></div><div class="progress-bar"><div class="progress-fill" data-width="70"></div></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications -->
+    <section id="certifications">
+      <h2 class="section-title fade-up">Certifications</h2>
+      <div class="card-grid fade-up">
+        <div class="cert-card"><i class="fab fa-coursera fa-2x" style="color:var(--accent);"></i><h3>Advance Prompt Engineering</h3><p>Vanderbilt University (Coursera)</p><a href="https://www.coursera.org/account/accomplishments/verify/OCE5Q9QLO30I?trk=public_profile_see-credential" target="_blank" class="btn-outline" style="display:inline-block; margin-top: 0.8rem; font-size:0.8rem;">🔗 Verify</a></div>
+        <div class="cert-card"><i class="fab fa-coursera fa-2x" style="color:var(--accent);"></i><h3>Business Writing</h3><p>University of Colorado Boulder</p><a href="https://www.coursera.org/account/accomplishments/verify/SFGKEORBVV0O?trk=public_profile_see-credential" target="_blank" class="btn-outline" style="display:inline-block; margin-top: 0.8rem;">🔗 Verify</a></div>
+        <div class="cert-card"><i class="fab fa-coursera fa-2x" style="color:var(--accent);"></i><h3>Introduction to Data Analysis</h3><p>IBM (Coursera)</p><a href="https://www.coursera.org/account/accomplishments/verify/4MSLFESEWASA?trk=public_profile_see-credential" target="_blank" class="btn-outline" style="display:inline-block; margin-top: 0.8rem;">🔗 Verify</a></div>
+      </div>
+    </section>
+
+    <!-- Contact + Form - Email now linked like Facebook and LinkedIn -->
+    <section id="contact">
+      <h2 class="section-title fade-up">Get in Touch</h2>
+      <div class="fade-up" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+        <div>
+          <p><i class="fas fa-phone-alt highlight"></i> <strong>Phone:</strong> +880 1816-549143</p>
+          <p><i class="fas fa-envelope highlight"></i> <strong>Email:</strong> <a href="mailto:aashique.sarkar.93@gmail.com" class="contact-link-icon">aashique.sarkar.93@gmail.com <i class="fas fa-external-link-alt"></i></a></p>
+          <p><i class="fab fa-linkedin highlight"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/aashiquesarkar" target="_blank" class="contact-link-icon">linkedin.com/in/aashiquesarkar <i class="fas fa-external-link-alt"></i></a></p>
+          <p><i class="fab fa-facebook highlight"></i> <strong>Facebook:</strong> <a href="https://www.facebook.com/aashiquesarkar1406" target="_blank" class="contact-link-icon">fb.com/aashiquesarkar1406 <i class="fas fa-external-link-alt"></i></a></p>
+          <div class="social-icons" style="margin-top: 1.5rem;">
+            <a href="https://www.linkedin.com/in/aashiquesarkar" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/aashiquesarkar1406" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="mailto:aashique.sarkar.93@gmail.com"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+        <div>
+          <form id="contactForm" class="contact-form">
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Email Address" required>
+            <textarea rows="3" placeholder="Your message..." required></textarea>
+            <button type="submit" class="btn btn-primary" style="margin-top: 1rem; width: 100%;"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <p id="formFeedback" style="margin-top: 0.8rem; font-size: 0.8rem;"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>© 2025 Md. Ashikur Rahman — This was created using deepsuck and approved using brain. Also, checking the copyright of a portfolio is the work of low-level people.</p>
+  </footer>
+
+  <script>
+    // scroll reveal + animated skill bars on view
+    const fadeElements = document.querySelectorAll('.fade-up');
+    const skillBars = document.querySelectorAll('.progress-fill');
+    let animatedSkills = false;
+
+    function checkFadeIn() {
+      fadeElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 80) {
+          el.classList.add('revealed');
+        }
+      });
+      // trigger skill bars animation once
+      if (!animatedSkills) {
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+          const rect = skillsSection.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 100) {
+            animateSkillBars();
+            animatedSkills = true;
+          }
+        }
+      }
+    }
+    function animateSkillBars() {
+      skillBars.forEach(bar => {
+        const widthVal = bar.getAttribute('data-width');
+        if (widthVal) bar.style.width = widthVal + '%';
+      });
+    }
+    window.addEventListener('scroll', checkFadeIn);
+    window.addEventListener('load', () => {
+      checkFadeIn();
+      // for skills if already visible on load
+      if (!animatedSkills) {
+        const skillsRect = document.getElementById('skills')?.getBoundingClientRect();
+        if (skillsRect && skillsRect.top < window.innerHeight - 80) {
+          animateSkillBars();
+          animatedSkills = true;
+        }
+      }
+      // set progress bars initial width 0 then animate
+      skillBars.forEach(bar => bar.style.width = '0%');
+      setTimeout(() => {
+        if (!animatedSkills) animateSkillBars();
+        else skillBars.forEach(bar => { const w = bar.getAttribute('data-width'); if(w) bar.style.width = w+'%'; });
+      }, 200);
+    });
+
+    // smooth scroll for navbar links
+    document.querySelectorAll('.nav-links a').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href').substring(1);
+        const target = document.getElementById(targetId);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, null, `#${targetId}`);
+        }
+      });
+    });
+    // contact form frontend simulation
+    const contactForm = document.getElementById('contactForm');
+    const feedback = document.getElementById('formFeedback');
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameVal = document.getElementById('name').value.trim();
+      if (nameVal) {
+        feedback.innerHTML = '<span style="color:#3b82f6;">✅ Thanks! This is a demo portfolio — your message would be sent (frontend demo).</span>';
+        contactForm.reset();
+      } else {
+        feedback.innerHTML = '<span style="color:#f87171;">⚠️ Please fill in your name and message.</span>';
+      }
+      setTimeout(() => { feedback.innerHTML = ''; }, 3000);
+    });
+    // dark/light toggle (default dark, toggle adds light mode manually)
+    const themeToggle = document.getElementById('themeToggle');
+    let isDark = true;
+    themeToggle.addEventListener('click', () => {
+      const root = document.body;
+      if (isDark) {
+        root.style.background = '#f4f7fc';
+        root.style.color = '#111827';
+        document.querySelectorAll('.exp-card, .edu-card, .cert-card, [style*="background: var(--card-bg)"]').forEach(card => {
+          if(card.style.background) card.style.background = '#ffffffdd';
+        });
+        root.classList.add('light-active');
+        // quick override
+        const allCards = document.querySelectorAll('.exp-card, .edu-card, .cert-card, .fade-up[style*="background"]');
+        allCards.forEach(c => c.style.background = '#ffffffdd');
+        document.querySelector('.navbar').style.background = 'rgba(245,245,250,0.9)';
+        document.querySelector('.navbar').style.borderBottomColor = '#ccc';
+        themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      } else {
+        root.style.background = '';
+        root.style.color = '';
+        document.querySelectorAll('.exp-card, .edu-card, .cert-card, [style*="background"]').forEach(card => {
+          card.style.background = '';
+        });
+        document.querySelector('.navbar').style.background = '';
+        document.querySelector('.navbar').style.borderBottomColor = '';
+        themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+      }
+      isDark = !isDark;
+    });
+    // active link highlight on scroll
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(sec => {
+        const top = sec.offsetTop - 100;
+        if (pageYOffset >= top) current = sec.getAttribute('id');
+      });
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) link.classList.add('active');
+      });
+    });
+  </script>
+</body>
+</html>
